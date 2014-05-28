@@ -2,6 +2,9 @@ export CLICOLOR=1
 export LSCOLORS=FxGACxDxCxegedabagacad
 export EDITOR='vim'
 
+source ~/.bin/tmuxinator.bash
+export TERM='xterm-256color'
+
 # Play a channel on di.fm with premium
 function difm() {
   if [[ -f ~/.di_listenkey ]]; then
