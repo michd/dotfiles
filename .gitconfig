@@ -1,0 +1,20 @@
+[user]
+  name = Michael Duerinckx
+  email = duerinckxmichael@gmail.com
+[merge]
+  tool = meld
+[alias]
+  st = status
+  co = checkout
+  b = branch
+  ci = commit
+  cb = checkout -b
+  ls = log --oneline
+  ru = remote update
+  om = origin master
+  o = origin
+  pullom = pull origin master
+  pushom = push origin master
+  sp = stash pop
+[core]
+  excludesfile = ~/.gitignore
