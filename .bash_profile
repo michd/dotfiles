@@ -47,7 +47,7 @@ parse_git_branch() {
 }
 
 parse_git_dirty() {
-  _gst_output=$($_gst_command)
+  _gst_output=$(git status --porcelain 2> /dev/null)
   _output=""
   if [[ ! "$_gst_output" = "" ]]; then
     if [[ ! $(git status --porcelain 2> /dev/null | grep ^\ M\ ) = "" ]]; then
