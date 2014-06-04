@@ -5,6 +5,87 @@ export EDITOR='vim'
 source ~/.bin/tmuxinator.bash
 export TERM='xterm-256color'
 
+quickscript() {
+  local scriptName
+  local keep="0"
+  local startLine="2"
+  mkdir -p ~/tmp
+
+  if [ "$1" = "--help" ]; then
+    cat <<- EOF
+	usage: quickscript [--keep] [--last] [--clean] [--help]
+
+	OPTIONS:
+	    --keep   Don't discard script after execution. Re-edit with --keep afterwards.
+	    --last   Edit and execute the last script you did with --keep
+	    --clean  Delete all lingering quickscripts that you may have kept with --keep
+	    --help   Show this help
+
+	Examples:
+	    Write script, execute, and discard:
+	    quickscript
+	        (edit the script, save and quit)
+
+	    Write script, execute and keep for edits:
+	    quickscript --keep
+	        (edit the script, save and quit)
+
+	    Edit last script saved with --keep, execute, and discard:
+	    quickscript --last
+	        (edit the script, save and quit)
+
+	    Edit last script saved with --keep, execute, and keep for edits again:
+	    quickscript --last --keep
+	        (edit the script, save and quit)
+
+	    Tidy up all quickscripts kept with --keep:
+	    quickscript --clean
+	EOF
+    return
+  fi
+
+  if [ "$1" = "--clean" ]; then
+    echo "Deleting any leftover quickscripts..."
+    rm $HOME/tmp/quickscript-*
+    echo "Done."
+    return
+  fi
+
+  if [ "$1" = "--keep" ] || [ "$2" = "--keep" ]; then
+    keep="1"
+  fi
+
+  if [ "$1" = "--last" ] || [ "$2" = "--last" ]; then
+    if [ -f "$HOME/tmp/quickscript-last" ]; then
+      scriptName="$(cat "$HOME/tmp/quickscript-last")"
+      rm $HOME/tmp/quickscript-last
+    else
+      echo "No maintained script found."
+      return
+    fi
+  else
+    scriptName="quickscript-$(date +%s)"
+    if [ "$keep" = "1" ]; then
+      echo -e "#!/bin/bash\n" > "$HOME/tmp/$scriptName"
+    else
+      echo -e "#!/bin/bash\n# Note: this file will be executed and then deleted.\n# Save it elsewhere if you want to keep it and use --keep next time.\n# See \`quickscript --help\` for details.\n" > "$HOME/tmp/$scriptName"
+      startLine="5"
+    fi
+  fi
+
+  vim +"$startLine" "$HOME/tmp/$scriptName"
+
+  chmod +x $HOME/tmp/$scriptName
+
+  $HOME/tmp/./$scriptName
+
+  if [ ! "$1" = "--keep" ] && [ ! "$2" = "--keep" ]; then
+    rm $HOME/tmp/$scriptName
+  else
+    echo "$scriptName" > $HOME/tmp/quickscript-last
+  fi
+}
+
 # Play a channel on di.fm with premium
 function difm() {
   if [[ -f ~/.di_listenkey ]]; then
@@ -93,6 +174,8 @@ alias gitrmdeleted='git rm $(git ls-files --deleted)'
 alias instaudiodev='mux start instaudio-dev'
 alias cdIA='cd ~/instaudio/repos/instaudio'
 alias clear='echo "You know better than that. (Ctrl+L)"'
+
+alias qs='quickscript'
 #Espruino
 alias ebuildflash='rm gen/*.* && rm espruino_*_espruino_1r3.* && ESPRUINO_1V3=1 make serialflash'
 
