@@ -40,6 +40,10 @@ nmap <F3> :GitGutterToggle<CR>
 nmap <F7> :mksession! .quicksave.vim<CR>
 nmap <F8> :source .quicksave.vim<CR>
 
+" Inserting newlines without insert mode
+nmap <S-Enter> O<Esc>j
+nmap <CR> o<Esc>k
+
 " gitgutter setup
 let g:gitgutter_enabled = 0
 let g:gitgutter_realtime = 1
