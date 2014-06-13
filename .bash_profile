@@ -174,6 +174,7 @@ alias gitrmdeleted='git rm $(git ls-files --deleted)'
 alias instaudiodev='mux start instaudio-dev'
 alias cdIA='cd ~/instaudio/repos/instaudio'
 alias clear='echo "You know better than that. (Ctrl+L)"'
+alias invertscreen='xcalib -i -a'
 
 alias qs='quickscript'
 #Espruino
