@@ -3,6 +3,9 @@ export LSCOLORS=FxGACxDxCxegedabagacad
 export EDITOR='vim'
 export GOPATH='$HOME/go-workspace'
 
+# Golang workspace
+export GOPATH=$HOME/go-workspace
+
 source ~/.bin/tmuxinator.bash
 export TERM='xterm-256color'
 
@@ -148,7 +151,7 @@ parse_git_dirty() {
 }
 
 #Format a nice command line prefix including current git branch
-PS1="\[\033[01;36m\]\u\[\033[00m\]\[\033[01;30m\]@\h\[\033[00m\]:\[\033[00;37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\[\033[00;31m\]\$(parse_git_dirty)\[\033[00m\] >> "
+PS1="\[\033[01;36m\]\u\[\033[00m\]\[\033[01;30m\]@\h\[\033[00m\]:\[\033[00;37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\[\033[00;31m\]\$(parse_git_dirty)\[\033[00m\]\n>> "
 
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
