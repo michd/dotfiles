@@ -1,6 +1,7 @@
 export CLICOLOR=1
 export LSCOLORS=FxGACxDxCxegedabagacad
 export EDITOR='vim'
+export GOPATH='$HOME/go-workspace'
 
 source ~/.bin/tmuxinator.bash
 export TERM='xterm-256color'
