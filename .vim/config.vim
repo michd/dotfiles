@@ -37,6 +37,10 @@ filetype plugin indent on
 set sessionoptions-=options
 " Keymappings
 nmap <F3> :GitGutterToggle<CR>
+" switch to last buffer you were in with F4
+nmap <F4> :b#<CR>
+" buffer switching with F5, number
+nmap <F5> :buffers<CR>:buffer<Space>
 nmap <F7> :mksession! .quicksave.vim<CR>
 nmap <F8> :source .quicksave.vim<CR>
 
