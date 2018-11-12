@@ -112,7 +112,7 @@ _completemarks() {
   COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
   return 0
 }
-complete -F _completemarks jump unmark
+complete -F _completemarks jump j unmark
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\|\1/'
@@ -151,6 +151,8 @@ alias ..6="cd ../../../../../../"
 alias gitrmdeleted='git rm $(git ls-files --deleted)'
 alias clear='echo "You know better than that. (Ctrl+L)"'
 alias invertscreen='xcalib -i -a'
+alias j='jump'
+alias m='mark'
 
 alias qs='quickscript'
 
