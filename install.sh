@@ -9,6 +9,7 @@ ln -s "$dotfiles"".tmux.conf" ./
 ln -s "$dotfiles"".vim/" ./
 ln -s "$dotfiles"".irbrc" ./
 ln -s "$dotfiles"".gemrc" ./
+ln -s "$dotfiles"".config" ./
 
 echo "source ~/.bash_profile" >> .bashrc
 popd
