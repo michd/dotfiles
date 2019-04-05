@@ -91,12 +91,19 @@ function mkcd() {
   cd $1
 }
 
+# Navigate up a given number of levels
 cdu() {
   local level=$1
+
+  # Regex to check if the argument is in number format.
+  # Arguments beyond the first one are ignored
   local numcheck='^[0-9]+$'
 
+  # If invoked without arguments, default to 1
   if [[ -z "$level" ]]; then level=1; fi
 
+  # If the supplied argument is not a number, print usage and exit with error
+  # code
   if ! [[ $level =~ $numcheck ]]; then
     cat <<-EOM
 Usage: cdu [LEVEL]
@@ -111,14 +118,17 @@ EOM
     return 1
   fi
 
+  # Build the relative path to cd to
   local path="./"
 
+  # Add "../" while level > 0
   while true; do
     ((level--))
     if [[ $level -lt 0 ]]; then break; fi
-    path="$path../"
+    path="$path../" # Concats the parent director to the path
   done
 
+  # Change directories to the constructed path
   cd $path
 }
 
