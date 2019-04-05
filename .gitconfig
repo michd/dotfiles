@@ -17,5 +17,7 @@
   pushom = push origin master
   sp = stash pop
   uncommit = reset --soft HEAD^
+  ca = commit --amend
+  can = commit --amend --no-edit
 [core]
   excludesfile = ~/.gitignore
