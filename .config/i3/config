@@ -146,6 +146,11 @@ bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 
+# Screenshots
+bindsym Print exec "maim --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
+bindsym Shift+Print exec "maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
+bindsym $mod+Print exec "flameshot gui"
+
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
