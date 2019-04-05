@@ -91,6 +91,37 @@ function mkcd() {
   cd $1
 }
 
+cdu() {
+  local level=$1
+  local numcheck='^[0-9]+$'
+
+  if [[ -z "$level" ]]; then level=1; fi
+
+  if ! [[ $level =~ $numcheck ]]; then
+    cat <<-EOM
+Usage: cdu [LEVEL]
+Navigate up LEVEL directories. LEVEL must be a positive integer.
+If LEVEL is omitted, navigates up a single level.
+
+Example:
+
+    $ cdu 3 # Navigate up 3 levels
+
+EOM
+    return 1
+  fi
+
+  local path="./"
+
+  while true; do
+    ((level--))
+    if [[ $level -lt 0 ]]; then break; fi
+    path="$path../"
+  done
+
+  cd $path
+}
+
 # Bookmark folders - thanks http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
 export MARKPATH=$HOME/.marks
 function jump { 
