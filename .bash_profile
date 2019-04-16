@@ -187,18 +187,11 @@ fi
 
 # useful productivity aliases
 alias canhas="sudo apt-get install"
-alias cd..="cd .."
-alias ..2="cd ../.."
-alias ..3="cd ../../../"
-alias ..4="cd ../../../../"
-alias ..5="cd ../../../../../"
-alias ..6="cd ../../../../../../"
 alias gitrmdeleted='git rm $(git ls-files --deleted)'
 alias clear='echo "You know better than that. (Ctrl+L)"'
 alias invertscreen='xcalib -i -a'
 alias j='jump'
 alias m='mark'
-
 alias qs='quickscript'
 
 alias e=$EDITOR
