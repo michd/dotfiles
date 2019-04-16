@@ -2,7 +2,9 @@
   name = Michael Duerinckx
   email = duerinckxmichael@gmail.com
 [merge]
-  tool = meld
+  tool = vimdiff
+  conflictstyle = diff3
+  prompt = false
 [alias]
   st = status
   co = checkout
@@ -21,3 +23,5 @@
   can = commit --amend --no-edit
 [core]
   excludesfile = ~/.gitignore
+[rebase]
+  autostash = true
