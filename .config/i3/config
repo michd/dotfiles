@@ -157,8 +157,8 @@ bindsym $mod+m bar mode toggle
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
   client.focused          #39215C #39215C #CDC9D3 #665186
-  client.focused_inactive #534C5C #534C5C #8B8692 #8B8692
-  client.unfocused        #534C5C #534C5C #8B8692 #8B8692
+  client.focused_inactive #675F72 #534C5C #8B8692 #8B8692
+  client.unfocused        #675F72 #534C5C #8B8692 #8B8692
   client.urgent           #877D28 #877D28 #FFFEF2 #C5BC6F
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
@@ -206,7 +206,7 @@ bar {
 #                      border  backgr. text
         focused_workspace  #665186 #39215C #FFFFFF
         active_workspace   #39215C #39215C #CDC9D3
-        inactive_workspace #18131F #18131F #7E7A83
+        inactive_workspace #282033 #18131F #7E7A83
         binding_mode       #877D28 #877D28 #FFFEF2
         urgent_workspace   #877D28 #877D28 #FFFEF2
     }
