@@ -50,12 +50,6 @@ bindsym $mod+Shift+q kill
 # installed.
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb \"#18131F\" -nf \"#CDC9D3\" -sb \"#665186\" -sf \"#FFFFFF\" -i"
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -122,6 +116,18 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+# Some more duplicate navigation shortcuts that make it easier for dual monitors
+# Left monitor, odd numbers
+bindsym $mod+F1 workspace 1
+bindsym $mod+F2 workspace 3
+bindsym $mod+F3 workspace 5
+bindsym $mod+F4 workspace 7
+#Right monitor, even numbers
+bindsym $mod+F5 workspace 2
+bindsym $mod+F6 workspace 4
+bindsym $mod+F7 workspace 6
+bindsym $mod+F8 workspace 8
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -134,6 +140,20 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# Some more duplicate move shortcuts that make it easier for dual monitors
+# Left monitor, odd numbers
+bindsym $mod+Shift+F1 move container to workspace 1
+bindsym $mod+Shift+F2 move container to workspace 3
+bindsym $mod+Shift+F3 move container to workspace 5
+bindsym $mod+Shift+F4 move container to workspace 7
+#Right monitor, even numbers
+bindsym $mod+Shift+F5 move container to workspace 2
+bindsym $mod+Shift+F6 move container to workspace 4
+bindsym $mod+Shift+F7 move container to workspace 6
+bindsym $mod+Shift+F8 move container to workspace 8
+
+# Lock computer
+bindsym $mod+l exec "i3lock --image=/home/mich/Dropbox/wallpaper/spyroBlack_rainbow-1080p.png -t"
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -145,7 +165,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit:' -b 'Log out' 'i3-msg 
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
-
+bindsym XF86AudioPlay exec "mpc --host=nerdnas.broadband toggle"
+bindsym XF86AudioPause exec "mpc --host=nerdnas.broadband toggle"
+bindsym XF86AudioNext exec "mpc --host=nerdnas.broadband next"
+bindsym XF86AudioPrev exec "mpc --host=nerdnas.broadband prev"
 # Screenshots
 bindsym Print exec "maim --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
 bindsym Shift+Print exec "maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
