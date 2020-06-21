@@ -1,0 +1,28 @@
+#!/bin/bash
+
+prefix_msg="# This file was concatenated from the files in config.d/.
+# Don't edit it directly.
+# Instead, run ./make-i3-config after editing files in config.d/ to regenerate
+# it and create a backup of the previous config file.
+"
+
+output_file="$HOME/.config/i3/config"
+source_path="$HOME/.config/i3/config.d/"
+backup_path="$HOME/.config/i3/backup/"
+backup_filename="config-$(date +"%Y-%m-%dT%H.%M.%S").bak"
+
+backup_fullpath="$backup_path$backup_filename"
+
+mkdir -p $backup_path
+
+if [ -f $output_file ]; then
+  echo "Backing up existing i3 config to $backup_fullpath"
+  cp $output_file $backup_fullpath
+fi
+
+echo "Putting together new i3 config from files found in $source_path:"
+echo $(ls $source_path*.conf)
+
+cat <(echo -e "$prefix_msg") $source_path/*.conf > $output_file
+
+echo "Done: new i3 config saved to $output_file."
