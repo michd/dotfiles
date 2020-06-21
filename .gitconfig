@@ -25,3 +25,7 @@
   excludesfile = ~/.gitignore
 [rebase]
   autostash = true
+[commit]
+  gpgsign = true
+[pull]
+	ff = only
