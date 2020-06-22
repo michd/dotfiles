@@ -118,7 +118,10 @@ def generate_scheme(base_hex_color, recipe):
     longest_name_len = get_longest_color_name(recipe)
 
     scheme_lines = [
-            f"{file_header:-<{line_length}}"
+        f"{file_header:-<{line_length}}",
+        "",
+        f"# This scheme was generated with #{base_hex_color} as a base color.",
+        ""
         ]
 
     for section_heading, sub_recipe in recipe.items():
