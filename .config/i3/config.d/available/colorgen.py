@@ -9,65 +9,65 @@ import sys
 
 recipe1 = {
     "dmenu color": {
-        "c_m_normal_bg": (0, -0.254, -0.239),
-        "c_m_normal_fg": (0, -0.594, 0.467),
-        "c_m_selected_bg": (0, -0.246, 0.165),
-        "c_m_selected_fg": (-0.734, -0.641, 0.639),
+        "c_m_normal_bg": (0, -0.5, -0.7),
+        "c_m_normal_fg": (0, -0.8, 0),
+        "c_m_selected_bg": (0, -0.3, 1),
+        "c_m_selected_fg": (0, -1, -1),
     },
 
     "window colors": {
-        "c_c_focus_active_border": (0, 0.000, 0.000),
-        "c_c_focus_active_bg": (0, 0.000, 0.000),
-        "c_c_focus_active_text": (-0, -0.594, 0.467),
-        "c_c_focus_active_indic": (-0, -0.246, 0.165),
+        "c_c_focus_active_border": (0, -0.1, -0.1),
+        "c_c_focus_active_bg": (0, -0.1, -0.1),
+        "c_c_focus_active_text": (0, -1, -1),
+        "c_c_focus_active_indic": (0, -1, 0),
 
-        "c_c_focus_inactive_border": (0, -0.475, 0.086),
-        "c_c_focus_inactive_bg": (0, -0.467, 0.000),
-        "c_c_focus_inactive_text": (0, -0.559, 0.212),
+        "c_c_focus_inactive_border": (0, -0.4, -0.4),
+        "c_c_focus_inactive_bg": (0, -0.5, -0.5),
+        "c_c_focus_inactive_text": (0, -0.6, 0),
         "c_c_focus_inactive_indic": (0, -0.559, 0.212),
 
-        "c_c_focused_border": (0, -0.475, 0.086),
-        "c_c_focused_bg": (0, -0.467, 0.000),
-        "c_c_focused_text": (0, -0.559, 0.212),
-        "c_c_focused_indic": (0, -0.559, 0.212),
+        "c_c_focused_border": (0, -0.6, -0.6),
+        "c_c_focused_bg": (0, -0.7, -0.7),
+        "c_c_focused_text": (0, -0.8, -0.4),
+        "c_c_focused_indic": (0, -0.5, -0.4),
 
-        "c_c_urgent_border": (-0.585, 0.062, 0.169),
-        "c_c_urgent_bg": (-0.585, 0.062, 0.169),
-        "c_c_urgent_text": (-0.581, -0.590, 0.639),
-        "c_c_urgent_indic": (-0.585, -0.205, 0.412),
+        "c_c_urgent_border": (-0.5, 0.062, 0.169),
+        "c_c_urgent_bg": (-0.5, 0.062, 0.169),
+        "c_c_urgent_text": (-0.5, -0.590, 0.639),
+        "c_c_urgent_indic": (-0.5, -0.205, 0.412),
 
-        "c_c_placeholder_border": (-0.734, -0.641, -0.361),
-        "c_c_placeholder_bg": (-0.734, -0.641, -0.314),
-        "c_c_placeholder_text": (-0.734, -0.641, 0.639),
-        "c_c_placeholder_indic": (-0.734, -0.641, -0.361),
+        "c_c_placeholder_border": (0, -0.641, -0.361),
+        "c_c_placeholder_bg": (0, -0.641, -0.314),
+        "c_c_placeholder_text": (0, -0.641, 0.639),
+        "c_c_placeholder_indic": (0, -0.641, -0.361),
 
         "c_c_bg": (0, 0.287, -0.196),
     },
 
     "bar colors": {
-        "c_b_bg": (0, -0.4, -0.6),
-        "c_b_status_text": (0, -1, 0.8),
-        "c_b_separator": (0, 0.000, 0.000),
+        "c_b_bg": (0, -0.4, -0.9),
+        "c_b_status_text": (0, -0.9, 0.8),
+        "c_b_separator": (0, -0.5, -0.5),
 
-        "c_b_focused_ws_border": (0, -0.246, 0.165),
-        "c_b_focused_ws_bg": (0, 0.000, 0.000),
-        "c_b_focused_ws_text": (0, -0.641, 0.6),
+        "c_b_focused_ws_border": (0, -0.1, -0.1),
+        "c_b_focused_ws_bg": (0, -0.1, -0.1),
+        "c_b_focused_ws_text": (0, -1, -1),
 
-        "c_b_active_ws_border": (0, 0, 0),
-        "c_b_active_ws_bg": (0, 0, 0),
-        "c_b_active_ws_text": (0, -0.594, 0.6),
+        "c_b_active_ws_border": (0, -0.5, -0.5),
+        "c_b_active_ws_bg": (0, -0.6, -0.6),
+        "c_b_active_ws_text": (0, -1, 1),
 
-        "c_b_inactive_ws_border": (0, -0.269, -0.161),
-        "c_b_inactive_ws_bg": (0, -0.254, -0.239),
-        "c_b_inactive_ws_text": (0, -0.573, 0.3),
+        "c_b_inactive_ws_border": (0, -0.8, -0.7),
+        "c_b_inactive_ws_bg": (0, -0.8, -0.8),
+        "c_b_inactive_ws_text": (0, -0.9, -0.3),
 
-        "c_b_urgent_ws_border": (-0.585, 0.062, 0.169),
-        "c_b_urgent_ws_bg": (-0.585, 0.062, 0.169),
-        "c_b_urgent_ws_text": (-0.581, -0.590, 0.639),
+        "c_b_urgent_ws_border": (-0.5, 0, 0),
+        "c_b_urgent_ws_bg": (-0.5, 0, -0.2),
+        "c_b_urgent_ws_text": (-0.5, -0.8, 1),
 
-        "c_b_binding_mode_border": (-0.585, 0.062, 0.169),
-        "c_b_binding_mode_bg": (-0.585, 0.062, 0.169),
-        "c_b_binding_mode_text": (-0.581, -0.590, 0.639),
+        "c_b_binding_mode_border": (-0.5, 0, 0),
+        "c_b_binding_mode_bg": (-0.5, 0, -0.2),
+        "c_b_binding_mode_text": (-0.5, -0.8, 1),
     }
 }
 
@@ -86,6 +86,8 @@ def main():
     except ValueError:
         print(f"Invalid base hex color #{base_color}")
         exit(1)
+
+    base_color = normalize_color(base_color)
 
     if len(sys.argv) == 2:
         scheme = generate_scheme(base_color, recipe1)
@@ -168,6 +170,11 @@ def reverse_engineer_scheme(base_hex_color, filename):
  
 
     return adjustments
+
+def normalize_color(hex_color):
+    h, s, v = hex_to_hsv(hex_color)
+    return hsv_to_hex(h, 1.0 if s > 0 else 0, 1.0)
+
 
 def adjust_hsv(h, s, v, h_adj, s_adj, v_adj):
     h += h_adj
