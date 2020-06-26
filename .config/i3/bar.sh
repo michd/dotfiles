@@ -21,7 +21,7 @@ assemble() {
       local output=$($f)
       # If output is non-blank, echo it + delimiter
       if [ ! -z "$output" ]; then
-        echo -n "$output ︴"
+        echo -n "$output  ︴"
       fi
     fi
   done
@@ -32,6 +32,6 @@ i3status -c "$confPath/i3status.conf" | while :
 do
   read line
   # Concatenate script output before it
-  echo "$(assemble)$line"
+  echo "$(assemble) $line"
 done
 

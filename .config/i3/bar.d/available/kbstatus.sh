@@ -12,13 +12,13 @@ is_on() {
 }
 
 if [ "$(is_on $numLockSearch)" = true ]; then
-  echo -n "[NUM]"
+  echo -n "[1]"
 fi
 
 if [ "$(is_on $capsLockSearch)" = true ]; then
   if [ "$(is_on $numLockSearch)" = true ]; then
     echo -n " "
   fi
-  echo -n "[CAPS]"
+  echo -n "[A]"
 fi
 
