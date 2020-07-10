@@ -11,6 +11,7 @@ main() {
   make_symlink ".bash_profile"
   make_symlink ".tmux.conf"
   make_symlink ".vim"
+  make_symlink ".dotfile-assets"
 
   read -p "Install .config folder? (Y/n): " config_yn
   if [ $(is_yes "$config_yn") = true ]; then
