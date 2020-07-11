@@ -5,8 +5,8 @@
 # - Create an executable file that outputs what you want to add
 # - Put it in .bar.d/
 # You're done.
-# I like to put the actual scripts in bar.d/available and then create a synlink
-# to files I want to use in the parent directory. Simple activate/deactivate
+# I like to put the actual scripts in bar.d/available and then create a symlink
+# to files I want to use in the parent directory. Simply activate/deactivate
 # "plugins" if you will.
 
 confPath="$HOME/.config/i3/"
@@ -21,7 +21,7 @@ assemble() {
       local output=$($f)
       # If output is non-blank, echo it + delimiter
       if [ ! -z "$output" ]; then
-        echo -n "$output  ︴"
+        echo -n "$output ︴"
       fi
     fi
   done
@@ -32,6 +32,6 @@ i3status -c "$confPath/i3status.conf" | while :
 do
   read line
   # Concatenate script output before it
-  echo "$(assemble) $line"
+  echo "$(assemble)$line"
 done
 
