@@ -1,7 +1,6 @@
 [user]
   name = Michael Duerinckx
   email = duerinckxmichael@gmail.com
-	signingkey = 4194E08D29D0D2A8
 [merge]
   tool = vimdiff
   conflictstyle = diff3
@@ -26,7 +25,3 @@
   excludesfile = ~/.gitignore
 [rebase]
   autostash = true
-[commit]
-  gpgsign = true
-[pull]
-	ff = only
