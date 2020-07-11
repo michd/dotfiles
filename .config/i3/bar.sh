@@ -18,7 +18,7 @@ assemble() {
     # If it's a regular file and it's executable
     if [ -f $f ] && [ -x $f ]; then
       # Get its output
-      local output=$($f)
+      local output="$($f)"
       # If output is non-blank, echo it + delimiter
       if [ ! -z "$output" ]; then
         echo -n "$output ︴"
