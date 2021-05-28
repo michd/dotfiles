@@ -11,19 +11,25 @@ main() {
   make_symlink ".bash_profile"
   make_symlink ".tmux.conf"
   make_symlink ".vim"
-  make_symlink ".dotfile-assets"
 
-  read -p "Install .config folder? (Y/n): " config_yn
+  read -p "Install GUI-related config? (.config) folder? (Y/n): " config_yn
   if [ $(is_yes "$config_yn") = true ]; then
     make_symlink ".config"
+    make-symlink ".dotfile-assets"
 
     echo "Would you like to assemble an i3 config now?"
     echo "If not, go to ~/.config/i3 and run ./make-i3-config later."
     read -p "Make i3 config? (Y/n): " conf_yn
 
     if [ $(is_yes "$conf_yn") = true ]; then
-      pushd ".config/i3"
+      pushd ".config/i3/config.d/"
+      # install default config bits
+      ln -s available/0-colors-neutral.conf ./
+      ln -s available 1-common.conf ./
+      pushd ../
+      # assemble the config file
       ./make-i3-config
+      popd
       popd
     else
       "Skipped making i3 config file"
