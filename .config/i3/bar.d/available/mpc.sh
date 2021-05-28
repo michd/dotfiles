@@ -1,6 +1,19 @@
 #!/bin/bash
-output="$(mpc --host=nerdnas.broadband)"
-media="$(mpc --host=nerdnas.broadband -f '%artist% - %title%' current)"
+output="$(mpc --host=nerdnas.broadband status)"
+media=""
+play_status=""
+settings=""
+
+i=0
+while read line; do
+  case $i in
+    0) media=$line;;
+    1) play_status=$line;;
+    2) settings=$line;;
+  esac
+
+  i=$((i+1))
+done < <(echo "$output")
 
 if [[ "$media" =~ "MPD error:" ]]; then
   exit 0
@@ -13,7 +26,9 @@ else
   else
     exit 0
   fi
-  echo $icon $media
+
+  pos=$(echo "$play_status" | awk '{ print $3 }')
+  echo "$icon $media ($pos)"
 fi
 
 
