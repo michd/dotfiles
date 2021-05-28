@@ -60,15 +60,11 @@ let g:gitgutter_realtime = 1
 hi User1 ctermfg=red
 
 set laststatus=2
-set statusline=%t       "tail of the filename
-set statusline+=%h      "help file flag
-set statusline+=\ %1*%m%*\   "modified flag
-set statusline+=%r      "read only flag
-set statusline+=\ %y\       "filetype
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
 
 set modelines=0
 set nomodeline
+
+" ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_new_file = 'v'
