@@ -1,6 +1,8 @@
 [user]
   name = Michael Duerinckx
-  email = duerinckxmichael@gmail.com
+  email = mich@michd.me
+[include]
+  path = .gitconfig-signingkey
 [merge]
   tool = vimdiff
   conflictstyle = diff3
@@ -25,3 +27,5 @@
   excludesfile = ~/.gitignore
 [rebase]
   autostash = true
+[init]
+  defaultBranch = main
