@@ -7,7 +7,21 @@ main() {
   # Fetch plugins installed as submodules
   git submodule update --init
 
+  echo ""
+  echo "What machine type are you configuring? (For theming)"
+  read -p "0: desktop, 1: server, 2: home-server, 3: android (0): " machine_type
+
+  local m_type_str="desktop"
+  case $machine_type in
+      0) m_type_str="desktop" ;;
+      1) m_type_str="server" ;;
+      2) m_type_str="home-server" ;;
+      3) m_type_str="android" ;;
+  esac
+
   pushd $destination
+
+  echo $m_type_str > ".machine-type"
 
   make_symlink ".gitconfig"
   make_symlink ".vimrc"
