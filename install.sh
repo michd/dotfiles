@@ -14,32 +14,12 @@ main() {
 
   read -p "Install GUI-related config? (.config) folder? (Y/n): " config_yn
   if [ $(is_yes "$config_yn") = true ]; then
-    make_symlink ".config"
-    make-symlink ".dotfile-assets"
-
-    echo "Would you like to assemble an i3 config now?"
-    echo "If not, go to ~/.config/i3 and run ./make-i3-config later."
-    read -p "Make i3 config? (Y/n): " conf_yn
-
-    if [ $(is_yes "$conf_yn") = true ]; then
-      pushd ".config/i3/config.d/"
-      # install default config bits
-      ln -s available/0-colors-neutral.conf ./
-      ln -s available 1-common.conf ./
-      pushd ../
-      # assemble the config file
-      ./make-i3-config
-      popd
-      popd
-    else
-      "Skipped making i3 config file"
-    fi
+    install_gui_config
   else
     echo "Skipped .config folder."
   fi
 
   read -p "Install ruby-related dotfiles? (Y/n): " ruby_yn
-
   if [ $(is_yes "$ruby_yn") = true ]; then
     make_symlink ".irbrc"
     make_symlink ".gemrc"
@@ -47,10 +27,46 @@ main() {
     echo "Skipped ruby-related dotfiles."
   fi
 
+  echo "Install vim config for root user too? It's handy for \`sudo vim \`."
+  echo "This will not check for conflicts and delete /root/.vim"
+  read -p "Install vim config for root user? (Y/n): " root_vim_yn
+  if [ $(is_yes "$root_vim_yn") = true ]; then
+    sudo ln -s "${dotfiles}/.vimrc" "/root/.vimrc"
+    sudo mkdir -p "/root/.config"
+    sudo rm -r /root/.vim
+    sudo ln -s "${dotfiles}.vim" "/root/.vim"
+    sudo ln -s "${dotfiles}.config/vim" "/root/.config/vim"
+  else
+    echo "Skipped installing vim config for root."
+  fi
+
   echo "source ~/.bash_profile" >> .bashrc
 
   popd
   echo "Dotfiles installed."
+}
+
+install_gui_config() {
+  make_symlink ".config"
+  make-symlink ".dotfile-assets"
+
+  echo "Would you like to assemble an i3 config now?"
+  echo "If not, go to ~/.config/i3 and run ./make-i3-config later."
+  read -p "Make i3 config? (Y/n): " conf_yn
+
+  if [ $(is_yes "$conf_yn") = true ]; then
+    pushd ".config/i3/config.d/"
+    # install default config bits
+    ln -s available/0-colors-neutral.conf ./
+    ln -s available 1-common.conf ./
+    pushd ../
+    # assemble the config file
+    ./make-i3-config
+    popd
+    popd
+  else
+    "Skipped making i3 config file"
+  fi
 }
 
 make_symlink() {
