@@ -1,7 +1,7 @@
 " colors
 set t_Co=256
 let g:rehash256 = 1
-autocmd vimenter * ++nested colorscheme gruvbox
+autocmd vimenter * nested colorscheme gruvbox
 " Remove timeout after pressing escape
 set timeoutlen=1000 ttimeoutlen=0
 set background=dark
