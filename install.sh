@@ -4,6 +4,9 @@ dotfiles="$(pwd)/"
 destination="$HOME/"
 
 main() {
+  # Fetch plugins installed as submodules
+  git submodule update --init
+
   pushd $destination
 
   make_symlink ".gitconfig"
