@@ -13,9 +13,9 @@ set number
 set smartindent
 set autoindent
 set expandtab
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
 
 " show tabs and trailing spaces
 set list
@@ -26,8 +26,8 @@ set incsearch
 " highligh searches
 set hlsearch
 
-" Draw a line at column 80
-set colorcolumn=80
+" Draw a line at columns 80 and 100
+set colorcolumn=80,100
 
 " pathogen
 execute pathogen#infect()
