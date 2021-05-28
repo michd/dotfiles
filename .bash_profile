@@ -4,6 +4,53 @@ export EDITOR='vim'
 
 export TERM='xterm-256color'
 
+# Default machine type, used for picking colors for prompt, tmux colors
+MACHINE_TYPE="desktop"
+
+# Look for a file that contains this, should be set up by dotfiles install.sh
+if [ -f "$HOME/.machine-type" ]; then
+    MACHINE_TYPE=$(cat "$HOME/.machine-type")
+fi
+
+
+TMUX_STATUS_BG="light cyan"
+TMUX_STATUS_FG="black"
+PS1_HOST_COLOR="1;36m"
+
+case $MACHINE_TYPE in
+    "desktop")
+        TMUX_STATUS_BG="cyan"
+        TMUX_STATUS_FG=black
+        PS1_HOST_COLOR="1;36m"
+        ;;
+
+    "server")
+        TMUX_STATUS_BG=yellow
+        TMUX_STATUS_FG=black
+        PS1_HOST_COLOR="1;33m"
+        ;;
+
+    "home-server")
+        TMUX_STATUS_BG="green"
+        TMUX_STATUS_FG=black
+        PS1_HOST_COLOR="1;32m"
+        ;;
+
+    "android")
+        TMUX_STATUS_BG="magenta"
+        TMUX_STATUS_FG=white
+        PS1_HOST_COLOR="1;35m"
+        ;;
+esac
+
+# Configure TMUX colors based on those vars just determined
+if [ ! -z $TMUX ]; then
+    tmux set-option -g status-bg "$TMUX_STATUS_BG"
+    tmux set-option -g status-fg "$TMUX_STATUS_FG"
+    tmux set-option -g pane-active-border-style "fg=$TMUX_STATUS_BG"
+    tmux set-option -g window-status-current-format "#[bg=$TMUX_STATUS_FG,fg=$TMUX_STATUS_BG] #I:#W "
+fi
+
 # Make a directory and change to it
 function mkcd() {
   mkdir -p $1
@@ -36,7 +83,7 @@ complete -F _completemarks jump j unmark
 
 # PS1 status line with git status
 parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\|\1/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \1/'
 }
 
 parse_git_dirty() {
@@ -54,12 +101,28 @@ parse_git_dirty() {
       _old_output=$_output
       _output="%$_old_output"
     fi
-    echo "|$_output"
+    echo " $_output"
   fi
 }
 
 #Format a nice command line prefix including current git branch
-PS1="\033[01;36m\]\u\[\033[00m\]\[\033[01;30m\]@\h\[\033[00m\]:\[\033[00;37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\[\033[00;31m\]\$(parse_git_dirty)\[\033[00m\]\n> "
+PS1="\
+\u\
+\e[1;30m\]@\e[0m\
+\e[$PS1_HOST_COLOR\h\e[0m \
+\e[37m\w\e[0m\
+\e[33m\$(parse_git_branch)\[\e[0m\
+\e[31m\]\$(parse_git_dirty)\e[0m\
+\n> "
+
+# Documenting that:
+# - username
+# - @ symbol in subtle grey
+# - hostname is color set by PS1_HOST_COLOR + space
+# - working directory
+# - git branch
+# - And git status flags
+# - newline and >
 
 # Include any domain-specific additions from the ~/.bash_profile_ext folder
 if [ -d "$HOME/.bash_profile_ext" ]; then
