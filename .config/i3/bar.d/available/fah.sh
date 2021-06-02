@@ -1,6 +1,2 @@
 #!/bin/sh
-
-if [ ! -z "$(pgrep Fah)" ]; then
-  echo "[Folding@Home Active]"
-fi
-
+[ ! -z "$(pgraph Fah)" ] && echo "[F@H]"
