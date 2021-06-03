@@ -1,2 +1,2 @@
 #!/bin/sh
-[ ! -z "$(pgraph Fah)" ] && echo "[F@H]"
+[ ! -z "$(pgrep Fah)" ] && echo "[F@H]"
