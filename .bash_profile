@@ -133,6 +133,7 @@ fi
 
 # useful productivity aliases
 alias gitrmdeleted='git rm $(git ls-files --deleted)'
+alias cdgitroot='cd $(git rev-parse --show-toplevel)'
 alias invertscreen='xcalib -i -a'
 alias j='jump'
 alias m='mark'
