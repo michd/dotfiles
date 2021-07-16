@@ -11,6 +11,14 @@ __pycache__
 !/.config/dunst/*
 !/.config/i3
 !/.config/i3/*
+!/.config/fish
+!/.config/fish/*
+
+# Exclude private additions that don't need to be in the repo
+/.config/fish/functions/default/private/*
+
+# Exclude symlinks to default functions
+/.config/fish/functions/default/*.fish
 
 # Don't include generated config file
 /.config/i3/config
