@@ -13,6 +13,8 @@ __pycache__
 !/.config/i3/*
 !/.config/fish
 !/.config/fish/*
+!/.config/rofi
+!/.config/rofi/*
 
 # Exclude private additions that don't need to be in the repo
 /.config/fish/functions/default/private/*

@@ -1,0 +1,5 @@
+configuration {
+    theme: "/usr/share/rofi/themes/gruvbox-dark.rasi";
+    combi-modi: "window,drun";
+    modi: "window,drun,combi";
+}
