@@ -39,7 +39,7 @@ main() {
   local timeDiff=$(($currentTime - $lastUpdate))
 
   if [ $(($timeDiff)) -ge $(($updateIntervalSeconds)) ]; then
-    lastWeather=$(curl -s "https://wttr.in/$location?format=4")
+    lastWeather=$(curl --max-time 0.8 -s "https://wttr.in/$location?format=4")
     lastUpdate=$currentTime
     writeConfig
   fi
