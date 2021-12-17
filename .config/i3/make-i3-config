@@ -26,3 +26,5 @@ echo $(ls $source_path*.conf)
 cat <(echo -e "$prefix_msg") $source_path/*.conf > $output_file
 
 echo "Done: new i3 config saved to $output_file."
+echo "Restarting i3..."
+i3-msg restart
