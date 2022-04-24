@@ -55,4 +55,7 @@ if status is-interactive
 
     # Add some bash utilities I wrote to PATH
     set -x PATH $PATH /opt/bash-util
+    set -x PATH $PATH ~/go/bin
+    set -x PATH $PATH ~/bin
+    set -x PATH $PATH ~/.local/bin
 end
