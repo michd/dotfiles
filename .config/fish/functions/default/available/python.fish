@@ -8,3 +8,5 @@ function pva
 end
 
 set -x PYTHONSTARTUP ~/.pythonrc
+
+set -x PIPENV_VENV_IN_PROJECT 1
