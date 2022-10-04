@@ -4,8 +4,9 @@ sink=$(pactl list short sinks | grep `pactl info | grep "Default Sink:" | cut -d
 
 if [ "$sink" = "0" ]; then
   echo "🔉"
-else
+elif [ "$sink" = "1" ]; then
   echo "🎧"
+elif [ "$sink" = "2" ]; then
+  echo "🔉+🎧"
 fi
-
 
