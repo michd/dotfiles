@@ -1,0 +1,20 @@
+#XfceNotifyWindow {
+    background-color: shade(#EFAC16, 0.25); /*#111;*/
+    padding: 20px;
+    border: dotted 2px #EFAC16;
+    border-style: dotted dotted solid dotted;
+    border-width: 1px 1px 2px 1px;
+    color: #EEE;
+    border-radius: 4px;
+    box-shadow: 5px 0 25px #000;
+}
+
+#XfceNotifyWindow:hover {
+    border-color: #FFF;
+    background-color: #222;
+    color: #FFF;
+}
+
+#XfceNotifyWindow label#summary {
+    font-weight: bold;
+}

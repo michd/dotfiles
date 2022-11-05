@@ -29,7 +29,7 @@ main() {
   make_symlink ".tmux.conf"
   make_symlink ".vim"
 
-  read -p "Install GUI-related config? (.config) folder? (Y/n): " config_yn
+  read -p "Install GUI-related config? (.config, .themes) folders? (Y/n): " config_yn
   if [ $(is_yes "$config_yn") = true ]; then
     install_gui_config
   else
@@ -65,6 +65,7 @@ main() {
 
 install_gui_config() {
   make_symlink ".config"
+  make_symlink ".themes"
   make-symlink ".dotfile-assets"
 
   echo "Would you like to assemble an i3 config now?"

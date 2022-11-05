@@ -15,6 +15,7 @@ __pycache__
 !/.config/fish/*
 !/.config/rofi
 !/.config/rofi/*
+!/.themes
 
 # Exclude private additions that don't need to be in the repo
 /.config/fish/functions/default/private/*
@@ -37,7 +38,6 @@ __pycache__
 /.config/i3/bar.d/*
 # But do include the available ones
 !/.config/i3/bar.d/available/
-
 
 # Lockscreen generator state files
 .config/i3/dynamic-lock
