@@ -1,5 +1,5 @@
 #XfceNotifyWindow {
-    background-color: shade(#EFAC16, 0.25); /*#111;*/
+    background-color: shade(#EFAC16, 0.25);
     padding: 20px;
     border: dotted 2px #EFAC16;
     border-style: dotted dotted solid dotted;
