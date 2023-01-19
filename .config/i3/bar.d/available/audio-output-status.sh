@@ -1,12 +1,10 @@
 #!/bin/bash
 
-sink=$(pactl list short sinks | grep `pactl info | grep "Default Sink:" | cut -d " " -f 3` | cut -f 1)
+sink=$(pactl info | grep "Default Sink")
 
-if [ "$sink" = "0" ]; then
-  echo "🔉"
-elif [ "$sink" = "1" ]; then
+if [[ "$sink" == *"SteelSeries"* ]]; then
   echo "🎧"
-elif [ "$sink" = "2" ]; then
-  echo "🔉+🎧"
+elif [[ "$sink" == *"Focusrite"* ]]; then
+  echo "🔉"
 fi
 
