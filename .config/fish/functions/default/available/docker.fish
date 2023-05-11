@@ -1,0 +1,3 @@
+function ld
+    lazydocker
+end
