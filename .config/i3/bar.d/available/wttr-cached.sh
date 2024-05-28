@@ -44,7 +44,11 @@ main() {
     writeConfig
   fi
 
-  echo $lastWeather
+  if [[ "$lastWeather" == *"Unknown"* ]]; then
+      echo ""
+  else
+      echo $lastWeather
+  fi
 }
 
 echo $(main)
