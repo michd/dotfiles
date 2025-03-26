@@ -3,4 +3,5 @@ configuration {
     modi: "window,drun,combi";
 }
 
-@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+//@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+@theme "/home/mich/.local/share/rofi/themes/rounded-aurora.rasi"

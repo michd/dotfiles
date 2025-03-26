@@ -1,3 +1,5 @@
+command! W write
+
 " colors
 set t_Co=256
 let g:rehash256 = 1
@@ -71,3 +73,4 @@ set nomodeline
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_new_file = 'v'
+
