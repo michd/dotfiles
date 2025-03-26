@@ -15,6 +15,7 @@ __pycache__
 !/.config/fish/*
 !/.config/rofi
 !/.config/rofi/*
+!/.config/picom.conf
 !/.themes
 
 # Exclude private additions that don't need to be in the repo
