@@ -37,6 +37,7 @@ if [ ! -z $instance ]; then
     exit 0
 fi
 
+exit 0
 # If we get here, there was no playerctl instance, check for mpd instead.
 
 output="$(mpc --host=nerdnas.broadband status)"

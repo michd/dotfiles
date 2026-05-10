@@ -1,0 +1,2 @@
+include "config.d/*.conf"
+include "/etc/sway/config.d/*.conf"
