@@ -59,3 +59,6 @@ if status is-interactive
     set -x PATH $PATH ~/bin
     set -x PATH $PATH ~/.local/bin
 end
+
+# opam configuration
+source /home/mich/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true

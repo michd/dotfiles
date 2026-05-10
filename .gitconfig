@@ -18,6 +18,7 @@
   uncommit = reset --soft HEAD^
   ca = commit --amend
   can = commit --amend --no-edit
+  root = rev-parse --show-toplevel
 [core]
   excludesfile = ~/.gitignore
 [rebase]
