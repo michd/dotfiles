@@ -22,6 +22,7 @@ __pycache__
 !/.config/wm/*
 !/.config/picom.conf
 !/.themes
+!/.config/kitty
 
 # Exclude private additions that don't need to be in the repo
 /.config/fish/functions/default/private/*
