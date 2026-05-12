@@ -17,15 +17,18 @@
     ],
     "modules-right": [
         "idle_inhibitor",
+        "custom/wttr",
         "pulseaudio",
-        "network",
+        "group/network#group",
         "cpu",
+        "memory",
+        "disk",
         "backlight",
-        "keyboard-state",
+        "keyboard-state", // doesn't work
         "battery",
         "battery#bat2",
         "tray",
-        "clock",
+        "clock"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -53,7 +56,7 @@
         "dynamic-order": ["artist", "title", "album", "position", "length"],
         "status-icons": {
             "paused": "⏸",
-            "playing": "▶",
+            "playing": "▶"
         }
     },
     "keyboard-state": {
@@ -100,11 +103,19 @@
         //"format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "  {usage}%",
         "tooltip": false
     },
+    "disk": {
+        "interval": 10,
+        "format": " / {used} ({percentage_used}%)"
+    },
     "memory": {
-        "format": "{}% "
+        "format": "  {used} GiB ({percentage}%)",
+        "states": {
+            "warning": 80,
+            "critical": 95
+        }
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -148,22 +159,49 @@
         "power-saver": ""
       }
     },
-    "network": {
+    "group/network#group": {
+        "orientation": "inherit",
+        "children-class": "hidden",
+        "drawer": {
+            "click-to-reveal": true,
+		    "transition-duration": 150,
+		    "transition-left-to-right": true
+	    },
+        "modules": [
+            "network#main",
+            "network#traffic_up",
+            "network#traffic_down"
+        ]
+    },
+    "network#main": {
+        "interval": 1,
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{essid} ({signalStrength}%) {ipaddr} ",
         "format-ethernet": " {ipaddr}",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": null
+    },
+    "network#traffic_up": {
+        "interval": 1,
+        "format-wifi": "↑ {bandwidthUpBits}",
+        "format-ethernet": "↑ {bandwidthUpBits}",
+        "min-length": 12
+    },
+    "network#traffic_down": {
+        "interval": 1,
+        "format-wifi": "↓ {bandwidthDownBits}",
+        "format-ethernet": "↓ {bandwidthDownBits}",
+        "min-length": 12
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "  {volume}% ",
+        "format": "{icon}   {volume}% {format_source}",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": " {icon} (muted)   {format_source}",
+        "format-muted": " (muted) {format_source}",
+        "format-source": "  {volume}%",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
@@ -176,18 +214,6 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
     "custom/power": {
         "format" : "⏻ ",
 		"tooltip": false,
@@ -199,5 +225,10 @@
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
+    },
+    "custom/wttr": {
+        "exec": "$HOME/.config/wm/bar/available/wttr-cached.sh",
+        "interval": 60,
+        "tooltip": false
     }
 }
