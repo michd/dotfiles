@@ -9,7 +9,7 @@
     "modules-left": [
         "sway/workspaces",
         "sway/scratchpad",
-        "mpris",
+        "mpris"
     ],
     "modules-center": [
         "sway/mode",
@@ -28,7 +28,9 @@
         "battery",
         "battery#bat2",
         "tray",
-        "clock"
+        "clock#date",
+        "clock#time",
+        "custom/power",
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -95,12 +97,15 @@
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
     },
-    "clock": {
-        "format": "{:%Y-%m-%d %H:%M:%S}",
-        "interval": 1,
-        // "timezone": "America/New_York",
+    "clock#date": {
+        "format": "{:%Y-%m-%d}",
+        "interval": 30,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-        //"format-alt": "{:%Y-%m-%d}"
+    },
+    "clock#time": {
+        "format": "{:%H:%M:%S}",
+        "interval": 1,
+        "tooltip": false
     },
     "cpu": {
         "format": "  {usage}%",
@@ -215,16 +220,10 @@
         "on-click": "pavucontrol"
     },
     "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+        "format" : "⏻",
+        "on-click": "wleave -l $HOME/.config/wleave/layout.json",
+        "tooltip": true,
+        "tooltip-format": "Power"
     },
     "custom/wttr": {
         "exec": "$HOME/.config/wm/bar/available/wttr-cached.sh",
