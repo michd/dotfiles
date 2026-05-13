@@ -24,6 +24,7 @@ __pycache__
 !/.themes
 !/.config/kitty
 !/.config/waybar
+!/.config/wleave
 
 # Exclude private additions that don't need to be in the repo
 /.config/fish/functions/default/private/*
